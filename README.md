@@ -4,6 +4,9 @@ PPTPRO is a Codex skill for building polished, editable PPT/PPTX decks with a st
 
 It focuses on:
 
+- a mandatory anti-AI design gate for composition, typography, color, copy, imagery, and decoration
+- a six-pass design workflow: distill, layout, typeset, colorize, calibrate, and polish
+- an optional Zinx liquid-glass pixel-particle presentation direction with semantic red/yellow/blue/green roles
 - slide recipe planning instead of generic bullet decks
 - visual enrichment for text-heavy presentations
 - source-native figures and real source objects for evidence-backed decks
@@ -17,6 +20,8 @@ It focuses on:
 - `SKILL.md`: main skill behavior and workflow
 - `references/design-system.md`: PPTPRO visual language and QA rules
 - `references/slide-recipes.md`: reusable slide structures
+- `references/anti-ai-design.md`: anti-AI design gate and rendered-review criteria
+- `references/zinx-style.md`: optional Zinx presentation art direction
 - `scripts/pptpro_audit.py`: strict PPTX audit helper
 - `agents/openai.yaml`: agent metadata and default prompt
 

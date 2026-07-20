@@ -1,13 +1,13 @@
 ---
 name: pptpro
-description: Create visually polished, editable PPT/PPTX presentations in a clean PPTPRO style. Use when the user asks for a beautiful, designed, non-generic PowerPoint deck, especially course presentations, reading applications, source-backed slides, scripts matched to slide pages, or requests to avoid AI-looking beige/card templates and repeatedly check visual quality.
+description: Create visually polished, editable PPT/PPTX presentations with strict anti-AI design discipline and an optional Zinx liquid-glass pixel-particle art direction. Use for designed PowerPoint decks, course or scientific presentations, source-backed slides, speaker scripts, template-preserving revisions, Zinx-style decks, and requests to remove generic AI-looking layouts, copy, colors, cards, or decoration.
 ---
 
 # PPTPRO
 
 ## Purpose
 
-Use PPTPRO to make PPTs that look intentionally designed, not like text dropped into a template. The default output is an editable `.pptx`, with optional speaker script matched to slide numbers.
+Use PPTPRO to make PPTs that look intentionally designed, not like text dropped into a template. The default output is an editable `.pptx`, with optional speaker script matched to slide numbers. PPTPRO includes presentation-specific ZinxDesign art direction and anti-AI taste rules while continuing to own deck narrative, native PowerPoint construction, source handling, rendering, and audit.
 
 Default deck shell: include a simple designed cover slide at the beginning and a simple closing slide at the end. The cover should only contain basic metadata: title, presentation date, and presenter. The date is the actual talk/report date, not the presentation duration. The closing slide should contain `Thank You` and either `Questions` or `Questions & Discussion`; default to `Questions & Discussion` for class/academic presentations. Do not add abstracts, argument previews, slogans, agendas, decorative summaries, contact lines, or extra content unless the user or an official template explicitly requires them.
 
@@ -21,6 +21,18 @@ Read these before building or redesigning a deck:
 
 - `references/design-system.md`
 - `references/slide-recipes.md`
+- `references/anti-ai-design.md`
+
+Read `references/zinx-style.md` when the user asks for Zinx style, `Taste is all you need`, liquid glass, pixel particles, game-like HUD grammar, a short-video presentation deck, or the recognizable red/yellow/blue/green Zinx palette.
+
+Apply design direction in this order:
+
+1. Preserve a supplied template or explicit client/brand system unless the user asks to replace it.
+2. Follow an explicit visual direction from the user.
+3. Activate Zinx mode when the user names Zinx or its visual language.
+4. Otherwise use the clean editorial PPTPRO default.
+
+The anti-AI quality gate always applies. It may be adapted when a supplied template intentionally uses a normally banned device, but do not silently replace the template with PPTPRO or Zinx house style.
 
 Default to this style unless the user gives another brand/template:
 
@@ -93,6 +105,9 @@ Treat PPTPRO as a strict production workflow, not a loose style prompt.
 One-pass production bar:
 
 - if the user asks for a nicer, better-looking, more polished, class-ready, or graded presentation, interpret that as a request for full visual structure repair, not only color/font cleanup
+- make the static composition convincing before adding decorative effects; a weak layout does not become designed through particles, glow, glass, or animation
+- run the anti-AI gate before build and again on rendered previews; remove category-default aesthetics, repeated scaffolds, template copy, and decorative elements without an information role
+- when Zinx mode is active, use `references/zinx-style.md` as art direction while preserving PPTPRO's editable-object, source-evidence, script, and audit requirements
 - before building, decide the final slide count, template scope, slide recipe map, visual enrichment/image plan, and audit/render path
 - every revised content slide should have a visible design reason: process flow, image+analysis, matrix, comparison panel, platform/actor mix, conclusion synthesis, source object, or figure-led evidence
 - do not wait for user criticism to add relevant images when the deck is text-heavy and the topic has suitable traceable visuals
@@ -146,6 +161,8 @@ Also revise and rerender if a preview shows:
    - slide count or expected pacing, including the default cover and `Thank You` + `Questions & Discussion` closing slide unless an existing template overrides that shell
    - language
    - sources
+   - design direction: supplied template/brand, explicit user direction, Zinx mode, or default PPTPRO
+   - anti-AI risks to reject for this deck, including category-default palettes, repeated card scaffolds, and template-like copy
    - whether a speaker script is required
    - whether sources/references are required by the assignment or only included for traceability
    - for existing decks/templates: total source slide count, revised slide range, preserved slide range, and whether final handoff is the full deck or an excerpt
@@ -172,6 +189,8 @@ Also revise and rerender if a preview shows:
    - closing slide: only `Thank You` and `Questions & Discussion`; `Questions` alone is acceptable when a shorter ending fits better, unless the supplied template or partial-scope structure requires a different existing closing/conclusion slide
 
 3. Design the deck:
+   - apply `references/anti-ai-design.md` before styling individual slides
+   - if Zinx mode is active, apply `references/zinx-style.md` without weakening source readability, template fidelity, or editability
    - make slide 1 a polished cover with balanced visual mass; make the first content slide a concept or thesis page, not a generic bullet page
    - for book/source decks, make one early content slide a source/object page using real cover/metadata or source structure when available
    - make middle slides explain relationships through diagrams or flows
@@ -219,6 +238,9 @@ Also revise and rerender if a preview shows:
 
 ## Required Checks Before Handoff
 
+- The rendered deck passes the AI-slop test in `references/anti-ai-design.md`: no obvious category reflex, repeated scaffold, template copy, or decorative device without an information role.
+- Zinx mode, when requested, is visibly carried by material, palette roles, pixel interface grammar, composition, and restrained atmosphere rather than a few pasted particles or a logo.
+- A hidden `ZINX`/`ZX` signature, if used, remains quiet authorship only and is never explained, promoted, or presented as slide content.
 - No serif fonts unless explicitly required.
 - No beige/cream default background unless explicitly requested.
 - No text overflow, clipping, or obvious overlap in previews.
@@ -259,7 +281,7 @@ Also revise and rerender if a preview shows:
 Run the audit script from any project folder:
 
 ```bash
-python /Users/zin/.codex/skills/pptpro/scripts/pptpro_audit.py path/to/deck.pptx --script path/to/script.docx --render --strict
+python <pptpro-skill-dir>/scripts/pptpro_audit.py path/to/deck.pptx --script path/to/script.docx --render --strict
 ```
 
 After inventorying source-document data figures or deciding to use supporting images, add `--min-pictures N` when the final deck is expected to contain at least `N` original source or supporting image assets.
